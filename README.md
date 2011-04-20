@@ -8,17 +8,20 @@ It will create a global `s3://` stream wrapper that can be used with the usual `
 
 ## Requirements
 
-This bundle requires [Services_Amazon_S3](http://pear.php.net/Services_Amazon_S3). If you do not know where to put it
-look at the [orchestra sample-symfony](https://github.com/orchestra-io/sample-symfony2) application in the **vendor** 
-directory. You should [see](https://github.com/orchestra-io/sample-symfony2/tree/master/vendor/pear) a `pear` folder with the required files (and its dependencies)
+This bundle requires [Services_Amazon_S3](http://pear.php.net/Services_Amazon_S3). If you do not know where to put it,
+look in the **vendor** directory of the [orchestra sample-symfony](https://github.com/orchestra-io/sample-symfony2) application. 
+You should [see](https://github.com/orchestra-io/sample-symfony2/tree/master/vendor/pear) a `pear` folder with the required files (and its dependencies)
 
 If you are developing locally, you might as well want to use the **pear installer** and run `pear install Services_Amazon_S3-alpha`. Keep in mind
-that if you want to deploy your application on [Orchestra.io](http://orchestra.io) you will need to bundle your code in the vendor directory as shown above.
+that if you want to deploy your application on [Orchestra.io](http://orchestra.io) you will need to bundle your code in the **vendor** directory as
+done in the sample-symfony2 application
 
 
 ## Install the bundle
 
-Firstly, you need to retrieve the bundle. This can be done like such:
+Let's get started. 
+
+Firstly, you need to retrieve the bundle:
 
     $> cd sf2app;
     $> git submodule add git://github.com/orchestra-io/symfony2-s3streambundle.git src/Orchestra/S3StreamBundle
