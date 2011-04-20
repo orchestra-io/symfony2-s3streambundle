@@ -28,7 +28,7 @@ require_once 'Services/Amazon/S3/Stream.php';
  * An S3 Stream Bundle Extension
  *
  * This extension registers a new s3:// stream that will allow developers
- * to hook directly into monolog's stream file logging. 
+ * to hook directly into monolog's stream file logging.
  *
  * To use simply add your <strong>access_key_id</strong> and <strong>secret_access_key</strong>
  * to your app/config/config.yml under the orchestra_s3_stream: configuration like such:
@@ -45,7 +45,7 @@ require_once 'Services/Amazon/S3/Stream.php';
  * @package orchestra-io
  * @author  Orchestra Platform Ltd. <info@orchestra.io>
  */
-class OrchestraS3StreamExtension extends Extension 
+class OrchestraS3StreamExtension extends Extension
 {
     /**
      * Load and build the extension
@@ -57,15 +57,17 @@ class OrchestraS3StreamExtension extends Extension
      * @param  ContainerBuilder A container builder object.
      * @return void
      */
-    public function load (array $configs, ContainerBuilder $container) 
+    public function load (array $configs, ContainerBuilder $container)
     {
-        if (isset($configs['access_key_id']) && isset($configs['secret_access_key'])) {
-            \Services_Amazon_S3_Stream::register('s3', 
+        if (isset($configs[0]) && isset($configs[0]['access_key_id']) &&
+            isset($configs[0]['secret_access_key']))
+        {
+            \Services_Amazon_S3_Stream::register('s3',
                 array(
-                    'access_key_id'     => $configs['access_key_id'],
-                    'secret_access_key' => $configs['secret_access_key'],
-                    'acl'               => isset($configs['acl']) ? 
-                                               $configs['acl'] : 'public-read',
+                    'access_key_id'     => $configs[0]['access_key_id'],
+                    'secret_access_key' => $configs[0]['secret_access_key'],
+                    'acl'               => isset($configs[0]['acl']) ?
+                                               $configs[0]['acl'] : 'public-read',
                 )
             );
         }
