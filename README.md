@@ -23,15 +23,19 @@ Let's get started.
 
 Firstly, you need to retrieve the bundle:
 
-    $> cd sf2app;
-    $> git submodule add git://github.com/orchestra-io/symfony2-s3streambundle.git src/Orchestra/S3StreamBundle
+``` shell
+$ cd sf2app;
+$ git submodule add git://github.com/orchestra-io/symfony2-s3streambundle.git vendor/bundles/Orchestra/S3StreamBundle
+```
 
 Secondly, you have to configure the **YAML** in your **app/config/config.yml** as `access_key_id` and `secret_access_key` is **REQUIRED**.
 
-    orchestra_s3_stream:
-        access_key_id: XXX
-        secret_access_key: YYY
-        acl: public-read
+``` yml
+orchestra_s3_stream:
+    access_key_id: XXX
+    secret_access_key: YYY
+    acl: public-read
+```
 
 Obviously you have to replace ***XXX*** and ***YYY*** with your Amazon S3 access key and secret
 key information.
@@ -41,41 +45,47 @@ By default it is `public-read`.
 
 Finally, you have to add the **S3StreamBundle** to your application kernel
 
-    // app/AppKernel.php
-    public function registerBundles()
-    {
-        return array(
-            // ...
-            new Orchestra\S3StreamBundle\OrchestraS3StreamBundle(),
-            // ...
-        );
-    }
+``` php
+<?php
+// app/AppKernel.php
+public function registerBundles()
+{
+    return array(
+        // ...
+        new Orchestra\S3StreamBundle\OrchestraS3StreamBundle(),
+        // ...
+    );
+}
+```
 
 and add the autoload for the Orchestra namespace:
 
-    // app/autoload.php
-    // snip...
-    $loader->registerNamespaces(array(
-        // ...
-        'Orchestra'    => __DIR__.'/../src',
-        // ...
-    ));
-    // snip...
-
+``` php
+<?php
+// app/autoload.php
+// snip...
+$loader->registerNamespaces(array(
+    // ...
+    'Orchestra'    => __DIR__.'/../src',
+    // ...
+));
+// snip...
+```
 
 ## Using with Monolog
 
 You will need to modify your **app/config/config_prod.yml** to contain the following:
 
-    monolog:
-        handlers:
-            nested:
-                type:  stream
-                path:  s3://logs-bucket/%kernel.environment%.log
-                level: debug
+``` yml
+monolog:
+    handlers:
+        nested:
+            type:  stream
+            path:  s3://logs-bucket/%kernel.environment%.log
+            level: debug
+```
 
 *Make sure to replace* **logs-bucket** *with your bucket name. The bucket has to exist.*
-
 
 # License
 
