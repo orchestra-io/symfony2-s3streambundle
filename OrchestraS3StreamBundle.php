@@ -16,6 +16,8 @@ namespace Orchestra\S3StreamBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
 
+require_once 'Services/Amazon/S3/Stream.php';
+
 /**
  * An S3 Stream Bundle
  *
@@ -29,5 +31,15 @@ use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
  */
 class OrchestraS3StreamBundle extends BaseBundle
 {
-    // Peace and love.
+    /**
+     * Register the S3 StreamHandler
+     */
+    public function boot()
+    {
+        \Services_Amazon_S3_Stream::register('s3', array(
+            'access_key_id' => $this->container->getParameter('orchestra.s3.access_key_id'),
+            'secret_access_key' => $this->container->getParameter('orchestra.s3.secret_access_key'),
+            'acl' => $this->container->getParameter('orchestra.s3.acl'),
+        ));
+    }
 }
