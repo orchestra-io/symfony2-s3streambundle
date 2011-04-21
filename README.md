@@ -26,14 +26,18 @@ Firstly, you need to retrieve the bundle:
     $> cd sf2app;
     $> git submodule add git://github.com/orchestra-io/symfony2-s3streambundle.git src/Orchestra/S3StreamBundle
 
-Secondly, you have to configure the **YAML** in your **app/config/config.yml**
+Secondly, you have to configure the **YAML** in your **app/config/config.yml** as `access_key_id` and `secret_access_key` is **REQUIRED**.
 
     orchestra_s3_stream:
         access_key_id: XXX
         secret_access_key: YYY
+        acl: public-read
 
 Obviously you have to replace ***XXX*** and ***YYY*** with your Amazon S3 access key and secret
 key information.
+
+It is possible to change the default `acl` used. The different types can be seen in Services_Amazon_S3_AccessControlList.
+By default it is `public-read`.
 
 Finally, you have to add the **S3StreamBundle** to your application kernel
 
