@@ -16,6 +16,28 @@ If you are developing locally, you might as well want to use the **pear installe
 that if you want to deploy your application on [Orchestra.io](http://orchestra.io) you will need to bundle your code in the **vendor** directory as
 done in the sample-symfony2 application
 
+## Autoloading
+
+For this bundle to function it is needed to register `Services_` prefix with the autoloader. There is two ways of doing this.
+First is by adding the prefix it self.
+
+``` php
+<?php
+// ...
+$loader->registerPrefix('Services_', '/path/to/pear/lib');
+// ...
+```
+
+The second is by adding a prefix fallback which have the added benefit of enabling autoloading for all Pear packages installed.
+
+``` php
+<?php
+// ...
+$loader->registerPrefixFallback(array(
+    '/path/to/pear/lib'
+));
+// ...
+```
 
 ## Install the bundle
 

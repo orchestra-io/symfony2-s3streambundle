@@ -9,4 +9,7 @@ $loader->registerNamespaces(array(
     'Orchestra\\S3StreamBundle' => '../../',
     'Symfony' => $_SERVER['SYMFONY'],
 ));
+$loader->registerPrefixFallback(array(
+    $_SERVER['PEAR'],
+));
 $loader->register();

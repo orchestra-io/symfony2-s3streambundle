@@ -16,8 +16,6 @@ namespace Orchestra\S3StreamBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle as BaseBundle;
 
-require_once 'Services/Amazon/S3/Stream.php';
-
 /**
  * An S3 Stream Bundle
  *

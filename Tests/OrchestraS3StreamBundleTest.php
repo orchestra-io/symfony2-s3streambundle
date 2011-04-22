@@ -8,10 +8,10 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class OrchestraS3StreamBundleTest extends \PHPUnit_Framework_TestCase
 {
-    public function testRegisterBundle()
+    public function testRegisterStreamWrapper()
     {
-        if (false === @fopen('Services/Amazon/S3/Stream.php', 'r', true)) {
-            $this->markTestAsIncomplete('Missing Services_Amazon_S3_Stream Pear package.');
+        if (false === class_exists('Services_Amazon_S3_Stream')) {
+            $this->markTestIncomplete('Missing Services_Amazon_S3_Stream Pear package.');
         }
 
         $builder = new ContainerBuilder();
