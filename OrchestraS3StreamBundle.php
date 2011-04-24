@@ -35,9 +35,9 @@ class OrchestraS3StreamBundle extends BaseBundle
     public function boot()
     {
         \Services_Amazon_S3_Stream::register('s3', array(
-            'access_key_id' => $this->container->getParameter('orchestra.s3.access_key_id'),
-            'secret_access_key' => $this->container->getParameter('orchestra.s3.secret_access_key'),
-            'acl' => $this->container->getParameter('orchestra.s3.acl'),
+            'access_key_id' => $this->container->getParameter('orchestra_s3_stream.access_key_id'),
+            'secret_access_key' => $this->container->getParameter('orchestra_s3_stream.secret_access_key'),
+            'acl' => $this->container->getParameter('orchestra_s3_stream.acl'),
         ));
     }
 }
