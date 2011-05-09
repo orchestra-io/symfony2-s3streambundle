@@ -25,7 +25,7 @@ class OrchestraS3StreamExtensionTest extends \PHPUnit_Framework_TestCase
         $extension->load(array($config), $builder);
 
         foreach ($expected as $key => $value) {
-            $this->assertEquals($value, $builder->getParameter('orchestra.s3.' . $key));
+            $this->assertEquals($value, $builder->getParameter('orchestra_s3_stream.' . $key));
         }
     }
 }

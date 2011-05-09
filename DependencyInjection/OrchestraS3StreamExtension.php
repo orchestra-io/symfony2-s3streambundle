@@ -26,7 +26,7 @@ class OrchestraS3StreamExtension extends \Symfony\Component\HttpKernel\Dependenc
         $config        = $processor->processConfiguration($configuration, $configs);
 
         foreach (array('access_key_id', 'secret_access_key', 'acl') as $field) {
-            $container->setParameter('orchestra.s3.' . $field, $config[$field]);
+            $container->setParameter($this->getAlias() . '.' . $field, $config[$field]);
         }
     }
 }
